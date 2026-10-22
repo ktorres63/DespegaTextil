@@ -1,6 +1,6 @@
 import { Header } from "./components/layout/Header";
 import { Footer } from "./components/layout/Footer";
-import { VirtualAssistant } from "./components/assistant/VirtualAssistant";
+// import { VirtualAssistant } from "./components/assistant/VirtualAssistant";
 import { HomePage } from "./pages/HomePage";
 
 function App() {
