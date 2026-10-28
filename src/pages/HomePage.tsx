@@ -2,8 +2,9 @@ import { HeroSection } from "../components/sections/HeroSection";
 import { TrustStrip } from "../components/sections/TrustStrip";
 // import { ServicesSection } from "../components/sections/ServicesSection";
 // import { ExportProcess } from "../components/sections/ExportProcess";
+import { ProductGuideSection } from "../components/product-guide/ProductGuideSection";
 import { AboutSection } from "../components/sections/AboutSection";
-// import { FAQSection } from "../components/sections/FAQSection";
+import { FAQSection } from "../components/sections/FAQSection";
 // import { FinalCTA } from "../components/sections/FinalCTA";
 
 export function HomePage() {
@@ -13,8 +14,9 @@ export function HomePage() {
       <TrustStrip />
       {/* <ServicesSection /> */}
       {/* <ExportProcess /> */}
+      <ProductGuideSection />
       <AboutSection />
-      {/* <FAQSection /> */}
+      <FAQSection />
       {/* <FinalCTA /> */}
     </>
   );
