@@ -2,9 +2,10 @@ import {
   useEffect,
   useRef,
   useState,
-  type FormEvent,
+  type SubmitEvent,
 } from "react";
-import { MessageCircle, RotateCcw, Send, X } from "lucide-react";
+import { RotateCcw, Send, X } from "lucide-react";
+import mascotaDespega from "../../assets/mascota-despega-textil.webp";
 import { ASSISTANT_OPEN_EVENT } from "../../lib/assistant";
 import {
   assistantIntro,
@@ -82,15 +83,16 @@ export function VirtualAssistant() {
     appendExchange(label, getAnswerForTopic(topicId));
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const text = input.trim();
-    if (!text) return;
+ const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
+  event.preventDefault();
 
-    const answer = getAnswerForText(text);
-    appendExchange(text, answer.message);
-    setInput("");
-  };
+  const text = input.trim();
+  if (!text) return;
+
+  const answer = getAnswerForText(text);
+  appendExchange(text, answer.message);
+  setInput("");
+};
 
   const handleReset = () => {
     setMessages([{ id: 0, role: "assistant", text: assistantIntro }]);
@@ -116,11 +118,15 @@ export function VirtualAssistant() {
             />
             <div className="relative flex items-start justify-between gap-3">
               <div className="flex items-center gap-3">
-                <span className="grid size-9 place-items-center rounded-full border border-white/15 bg-white/10">
-                  <MessageCircle
+                <span className="grid size-11 shrink-0 place-items-center overflow-hidden rounded-full border border-white/20 bg-ivory">
+                  <img
+                    src={mascotaDespega}
+                    alt=""
                     aria-hidden="true"
-                    className="size-4 text-gold"
-                    strokeWidth={1.6}
+                    width={160}
+                    height={172}
+                    decoding="async"
+                    className="size-full origin-top scale-[1.25] object-contain object-top"
                   />
                 </span>
                 <div>
@@ -128,10 +134,10 @@ export function VirtualAssistant() {
                     id="asistente-titulo"
                     className="font-sans text-[0.9rem] font-semibold tracking-[-0.01em] text-ivory"
                   >
-                    Asistente Despega
+                    Tinki
                   </h2>
                   <p className="mt-0.5 text-[0.62rem] text-ivory/70">
-                    Respuestas guiadas · Sin IA
+                    Asistente Despega
                   </p>
                 </div>
               </div>
@@ -240,9 +246,7 @@ export function VirtualAssistant() {
                 />
               </button>
             </form>
-            <p className="mt-2 px-1 text-[0.58rem] leading-relaxed text-muted">
-              Respuestas predefinidas. No es una IA ni asesoría en vivo.
-            </p>
+            
           </div>
         </section>
       ) : null}
@@ -258,24 +262,24 @@ export function VirtualAssistant() {
           open ? "Cerrar asistente virtual" : "Abrir asistente virtual"
         }
         title={open ? "Cerrar asistente virtual" : "Abrir asistente virtual"}
-        className="fixed bottom-5 right-4 z-50 grid size-14 place-items-center rounded-full border border-white/15 bg-brand text-ivory shadow-panel transition-colors hover:bg-ink sm:right-6"
+        className="fixed bottom-5 right-4 z-50 grid size-14 place-items-center overflow-hidden rounded-full border border-brand/20 bg-ivory text-brand shadow-panel transition-[border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-brand/45 sm:right-6"
       >
-        <span className="relative grid size-5 place-items-center">
+        <span className="relative grid size-full place-items-center">
           {open ? (
-            <X aria-hidden="true" className="size-[1.25rem]" strokeWidth={1.8} />
+            <span className="grid size-full place-items-center bg-brand text-ivory">
+              <X aria-hidden="true" className="size-[1.25rem]" strokeWidth={1.8} />
+            </span>
           ) : (
-            <MessageCircle
+            <img
+              src={mascotaDespega}
+              alt=""
               aria-hidden="true"
-              className="size-[1.25rem]"
-              strokeWidth={1.7}
+              width={160}
+              height={172}
+              decoding="async"
+              className="size-full object-contain object-bottom p-0.5"
             />
           )}
-          {!open ? (
-            <span
-              aria-hidden="true"
-              className="absolute -right-1 -top-1 size-2 rounded-full bg-gold ring-2 ring-brand"
-            />
-          ) : null}
         </span>
       </button>
     </>
