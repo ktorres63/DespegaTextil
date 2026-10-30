@@ -5,6 +5,7 @@ export const siteConfig = {
     "Una consultoría enfocada en acercar la producción textil peruana a compradores internacionales, con información clara sobre rutas, costos y documentación.",
   location: "Perú",
   navItems: [
+    { label: "Producto", href: "#producto" },
     { label: "Servicios", href: "#servicios" },
     { label: "Proceso", href: "#proceso" },
     { label: "Nosotros", href: "#nosotros" },
